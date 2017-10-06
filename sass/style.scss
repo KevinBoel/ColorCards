@@ -1,0 +1,91 @@
+$base-color:#0F9988;
+$base-size: 350px;
+$font-family:sans-serif;
+
+
+body{
+@extend %flex-center;
+height: 100vh;
+margin: 0;
+@extend %flex-center;
+@extend %font-face;
+font: 100% $font-family;
+}
+
+
+
+
+
+@mixin size($width, $height:$width) {
+  width:$width;
+  height:$height;
+}
+
+%font-face {
+  font-family: sans-serif;
+  font-size: 20px;
+  color:#fff;
+}
+
+%color-card{
+  @extend %flex-center;
+  background: $base-color;
+  width: $base-size;
+  height: $base-size;
+  display: flex;
+
+}
+%flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base{
+  @extend %color-card;
+  &:after{
+    content:"("+$base-color+")";
+  }
+
+}
+
+
+.dark{
+  @extend %color-card;
+  @include size($base-size*.9);
+  background:darken($base-color,10%);
+  &:after{
+    content:"("+darken($base-color, 10%)+")";
+  }
+
+}
+
+
+
+.darker{
+  @extend %color-card;
+  @include size($base-size*.8);
+  background:darken($base-color,20%);
+  &:after{
+      content:"("+darken($base-color, 20%)+")";
+  }
+}
+
+
+.light{
+  @extend %color-card;
+  @include size($base-size*.9);
+  background:lighten($base-color,10%);
+  &:after{
+  content:"("+lighten($base-color, 10%)+")";  }
+
+}
+
+
+.lighter{
+  @extend %color-card;
+  @include size($base-size*.8);
+  background:lighten($base-color,20%);
+  &:after{
+content:"("+lighten($base-color, 20%)+")";  }
+}
